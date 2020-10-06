@@ -76,7 +76,7 @@
 		    </svg>
 
 		    <!--submitting-->
-			<p><input id = "button" class="form_button" type="submit" name="button" value="Жмяк" onclick="valid()"></p>
+			<p><input id="button" class="form_button" type="submit" name="button" value="Жмяк" onclick="valid()"></p>
 
 		    <div id="form">
 				<!--input x-->
@@ -269,9 +269,6 @@
 			   			disappear(node3);
 			   				
 			   			parent.appendChild(section);
-			   			console.log(window.scrollY);
-			   			scrolling();
-			   			console.log(window.scrollY);
 			   			return;
 			   		}
 		   		}else if(document.querySelector("#error")){
@@ -304,18 +301,17 @@
 		   		alert("x лежит в интервале (-3; 3)");
 			}
 			//scroll to the table of results
-			function scrolling(){
-				document.querySelector('#button').addEventListener('click', () => {
-					setTimeout(() => window.scrollTo(0,document.body.scrollHeight), 1000);
-				});
-			}
+			document.querySelector('#button').addEventListener('click', () => {
+				setTimeout(() => window.scrollTo(0,document.body.scrollHeight), 1000);
+			});
+			
 
 			function valid(){
-			    let i;
+				let i;
 				const clickOn = document.querySelectorAll('input:checked');
-				const allY = [];
-				const allR = [];
-				if (clickOn.length === 0){
+			    const allY = [];
+			    const allR = [];
+			    if (clickOn.length === 0){
 			    	alert("You haven't choosen any value");
 			    	return;
 			    } 
@@ -330,10 +326,6 @@
 			        }
 				}
 
-				if(isNaN(document.getElementById("text_field").value) || document.getElementById("text_field").value.trim().length === 0){
-				   	alert("You haven't written value of X");
-			  	 	return;
-			   	}
 			   	if (allY.length === 0){
 				   	alert("You haven't choosen any value for Y");
 			  	} else if (allR.length === 0){
@@ -343,7 +335,7 @@
 					const form = new FormData();
 					form.append('x', document.getElementById("text_field").value);
 					for (i = 0; i < allY.length; i++){
-						form.append(`y[${i}]`, allY[i]);
+						form.append(`y[${i}]`, allY[i]); 
 					}
 					for (i = 0; i < allR.length; i++) {
 						form.append(`R[${i}]`, allR[i]);
@@ -356,6 +348,7 @@
 							processData: false,
 							contentType: false,
 							data: form,
+
 							dataType: "json",
 							success: function (res) {
 								setResult(res);
@@ -371,13 +364,6 @@
 			}
 
 			function setResult(res){
-				// console.log(res.length);
-				// console.log(res[0]["x"]);
-				// console.log(res[0]["y"]);
-				// console.log(res[0]["R"]);
-				// console.log(res[0]["result"]);
-				// console.log(res[0]["work_time"]);
-				// console.log(res[0]["currentTime"]);
 				const html = String("<table id = 'resultTable'>" +
 						" <tr> " +
 						"<th>Координата X</th> " +

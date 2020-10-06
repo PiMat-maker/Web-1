@@ -7,7 +7,6 @@
     $R = $_POST["R"];
     if ($x == null || $y == null || $R == null){exit;}
 
-
     for ($i = 0; $i < count($y); $i++){
         for ($j = 0; $j < count($R); $j++){
             $result = "&#10060";
@@ -18,7 +17,7 @@
             $work_time = round((microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])*1000000, 1);
             $currentTime = date("H : i : s");
 
-            array_push($_SESSION["tablerow"], "{ \"x\": $x, \"y\": $y[$i], \"R\": $R[$j], \"result\": \"$result\",
+            array_push($_SESSION["tablerow"], "{ \"x\":\"$x\", \"y\": $y[$i], \"R\": $R[$j], \"result\": \"$result\",
              \"work_time\": $work_time, \"currentTime\": \"$currentTime\"}");
         }
     }
