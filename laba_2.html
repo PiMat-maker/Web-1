@@ -231,59 +231,73 @@
 
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script>
-			function validate_x(){
+
+			function error(txt, value = 1){
+				console.log('1');
 		    	//main block with elements
 		    	const parent = document.getElementById("form");
-		    	//input field for x coordinate
-		    	const val = document.getElementById("text_field").value; 
 		    	//nodes to change
-			   	const node2 = document.getElementById("checkbox_y"); 
-			   	const node3 = document.querySelector('.R');
+			   	const node1 = document.getElementById("checkbox_y"); 
+			   	const node2 = document.querySelector('.R');
+			   	const node3 = document.getElementById("x_text");
+
+			   	document.querySelector(".form_button").setAttribute("disabled", true); 
+
+		   			//text
+			   		const text = document.createTextNode(`! ${txt} !`); 
+			   		const span = document.createElement("span"); 
+			   		span.appendChild(text); 
+			   		span.style = "color: red"; 
+			   		const p = document.createElement("p"); 
+			   		p.appendChild(span); 
+			   		//pic error
+					const img = document.createElement("img"); 
+		    		img.src = "злой_пингвинчик.gif"; 
+			   		img.style.border = "6px dotted #CD5C5C"; 
+			   		const container = document.createElement("p"); 
+			   		container.appendChild(img);
+			   		//new section 
+			   		const section = document.createElement("section");
+			   		section.appendChild(p);
+		 			section.appendChild(container);
+		   			section.id = "error"; 
+		   			section.padding = 1;
+		   		
+		   			disappear(node1);
+		   			disappear(node2);
+		   			disappear(node3);
+		   				
+		   			parent.appendChild(section);
+
+		   			setTimeout(() =>{
+			   			parent.removeChild(document.getElementById("error"));
+			   			appear(node1);
+			   			appear(node2);
+			   			appear(node3);
+
+			   			if (value == 0){
+			   				document.querySelector(".form_button").removeAttribute("disabled");
+			   			}
+		   			}, 2000);
+			}
+
+			function validate_x(){
+				//input field for x coordinate
+		    	const val = document.getElementById("text_field").value; 
 		    	//checking
 		    	if(isNaN(val) || document.getElementById("text_field").value.trim().length === 0){
-		    		//button become disabled 
-		    		document.querySelector(".form_button").setAttribute("disabled", true); 
-		    		//if we also have pic with error
-		    		if (!document.querySelector("#error")){ 
-		    			//text
-				   		const text = document.createTextNode("! x have to be a number !"); 
-				   		const span = document.createElement("span"); 
-				   		span.appendChild(text); 
-				   		span.style = "color: red"; 
-				   		const p = document.createElement("p"); 
-				   		p.appendChild(span); 
-				   		//pic error
-						const img = document.createElement("img"); 
-			    		img.src = "злой_пингвинчик.gif"; 
-			    		img.style.border = "6px dotted #CD5C5C"; 
-			    		const container = document.createElement("p"); 
-			    		container.appendChild(img);
-			    		//new section 
-			    		const section = document.createElement("section");
-			    		section.appendChild(p);
-			   			section.appendChild(container);
-			   			section.id = "error"; 
-			   			section.padding = 1;
-			   		
-			   			disappear(node2);
-			   			disappear(node3);
-			   				
-			   			parent.appendChild(section);
-			   			return;
-			   		}
-		   		}else if(document.querySelector("#error")){
-		   			parent.removeChild(document.getElementById("error"));
-		   			appear(node2);
-		   			appear(node3);
-		   		}
+		    		error("x have to be a number");
+		    		return;
+		    	}
+		    	
 		   		if(val.indexOf(".") !== -1){
 			  		if (val.slice(0, val.indexOf(".")) >= 3 || val.slice(0, val.indexOf(".")) <= -3){
-			  			error();
+			  			error("x лежит в интервале (-3; 3)");
 			   			return;
 		   			}
 		   		}else if(val <= -3 || val >= 3){
-		   			error();
-		   			return;
+		   			error("x лежит в интервале (-3; 3)");
+		 			return;
 		   		}
 		   		document.querySelector(".form_button").removeAttribute("disabled");
 			}
@@ -296,10 +310,7 @@
 				element.classList.remove("disappear");
 			}
 		    //error message and button lock
-			function error(){
-		   		document.getElementById("button").setAttribute("disabled", true);
-		   		alert("x лежит в интервале (-3; 3)");
-			}
+			
 			//scroll to the table of results
 			document.querySelector('#button').addEventListener('click', () => {
 				setTimeout(() => window.scrollTo(0,document.body.scrollHeight), 1000);
@@ -312,7 +323,7 @@
 			    const allY = [];
 			    const allR = [];
 			    if (clickOn.length === 0){
-			    	alert("You haven't choosen any value");
+			    	error("You haven't choosen any value", 0);
 			    	return;
 			    } 
 			    else {
@@ -327,9 +338,9 @@
 				}
 
 			   	if (allY.length === 0){
-				   	alert("You haven't choosen any value for Y");
+				   	error("You haven't choosen any value for Y", 0);
 			  	} else if (allR.length === 0){
-				    alert("You haven't choosen any value for Radius");
+				    error("You haven't choosen any value for Radius", 0);
 				} 
 			    else {
 					const form = new FormData();
