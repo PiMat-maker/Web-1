@@ -1,0 +1,162 @@
+html {
+  background-color: #fff3bf;
+  text-align: center;
+  font-family: sans-serif;
+  display: block;
+  font-size: 15px;
+}
+
+header {
+  padding: 15px;
+}
+
+header p {
+  font-size: 13px;
+  font-style: italic;
+}
+
+#text_field{
+  border:none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#text_field:focus{
+  background-color: #fff3bf;
+}
+
+#main {
+  overflow: hidden;
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+  background-color: #fff9e0;
+}
+
+svg {
+  background-color: #fff3bf;
+  border: 6px solid #FFFFF0;
+  padding: 20px;
+  margin-left: -50%;
+  margin-top: 6%;
+  width: 300px;
+  height: 300px;
+}
+
+#form {
+  width: 400px;
+  margin-top: -46%;
+  margin-left: 53%;
+}
+
+.form_button{
+    width:180px;
+    height:40px;
+    font-size: 15px;
+    background-color: #fff3bf;
+    margin-left: -50%;
+    margin-top: 2%;
+    border: none;
+} 
+
+.form_button:hover{
+  background-color: #ffdaba;
+  border: 2px solid #000000;
+}
+
+.form_button:focus{
+  background-color: #f2c9a5;
+  border: none;
+}
+
+.gif img{
+  width: 45px;
+  height: 35px;
+  margin-top: 5px;
+}
+
+table.table_y {
+  width: 300px; 
+  height: 120px; 
+  padding-bottom: 15px;
+  text-align: center;
+  margin: auto;
+}
+
+table.table_R{
+	width: 300px; 
+  height: 80px; 
+  padding-bottom: 15px;
+  text-align: center;
+  margin: auto;
+}
+
+.disappear{
+  display: none;
+}
+
+/*------------------------------------------*/
+/* checkboxes' style */
+
+input[type=checkbox]{
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.box{
+  width: 18px;
+  height: 18px;
+  background-color: #000000;
+  position: absolute;
+  border-radius: 100%;
+  background-color: #fff9e0;
+  border: 2px solid #d1d1d1;
+}
+
+.box:hover{
+  background-color: #ffd54d;
+}
+
+input[type=checkbox]:checked + .box{
+  background-color: #6eff86;
+  border: 2px solid #206e2d;
+}
+
+/*------------------------------------------*/
+
+/* svg hover style */
+
+.rectangle:hover, .circle:hover, .triangle:hover{
+  fill: #6eff86;
+  stroke: #206e2d;
+}
+
+/*------------------------------------------*/
+
+#error{
+  padding: 15px;
+}
+
+section.x, section.y, section.R {
+	background-color: #ffdaba;
+	border: 3px dotted #FFFFFF;
+  margin-top: 15px;
+}
+
+#resultTable {
+  border: 1px, solid, #323141;
+  border-collapse: separate;
+  margin: auto;
+  padding-top: 25px;
+}
+
+#resultTable th {
+  background-color: #fffdd1;
+  color: black;
+}
+
+#resultTable *{
+  padding: 25px;
+}
+
+

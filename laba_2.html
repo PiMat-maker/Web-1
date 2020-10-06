@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<html>
+	<title>Веб-программирование</title>
+	<header id="head">
+		<!--connecting a style sheet-->
+		<link rel="stylesheet" href = "style_2.css">
+
+		<section class="gif">
+				<img src="пингвинчик.gif" alt="тут был пингвинчик">
+		</section>
+
+		<p>Лабораторная работа №1, Bариант 2716 </p>
+		<p>Выполнили: Полозова Екатерина, Кудлаков Роман (P3231)</p>
+
+	</header>
+	<body>
+
+		<div id="caption">
+
+			        <pre>
+
+ /\ \                 /\ \         /   \
+  \ \ \           ____ \ \ \____   /_/\  \
+    \ \ \         /'__`\ \ \ '__`\  \/ /\  \
+      \ \ \______ /\ \_\ \ \ \ \_\ \  \/\ \  \
+        \ `\___x__\\ \_,__/\ \ \_,__/     \ \__\
+         \ /__//__/ \/___/\_\ \/___/       \/__/
+
+     				</pre>
+		</div>
+		<div id="main">
+			
+			<!--coordinate plane-->
+			<svg>
+			    <line x1="0" x2="300" y1="150" y2="150" stroke="black"></line>
+			    <line x1="150" x2="150" y1="0" y2="300" stroke="black"></line>
+			    <polygon points="150,0 144,15 156,15" stroke="black"></polygon>
+			    <polygon points="300,150 285,156 285,144" stroke="black"></polygon>
+
+			    <line x1="200" x2="200" y1="155" y2="145" stroke="black"></line>
+			    <line x1="250" x2="250" y1="155" y2="145" stroke="black"></line>
+
+			    <line x1="50"  x2="50"  y1="155" y2="145" stroke="black"></line>
+			    <line x1="100" x2="100" y1="155" y2="145" stroke="black"></line>
+
+			    <line x1="145" x2="155" y1="100" y2="100" stroke="black"></line>
+			    <line x1="145" x2="155" y1="50"  y2="50"  stroke="black"></line>
+
+			    <line x1="145" x2="155" y1="200" y2="200" stroke="black"></line>
+			    <line x1="145" x2="155" y1="250" y2="250" stroke="black"></line>
+
+			    <text x="195" y="140">R/2</text>
+			    <text x="248" y="140">R</text>
+
+			    <text x="40" y="140">-R</text>
+			    <text x="90" y="140">-R/2</text>
+
+			    <text x="160" y="105">R/2</text>
+			    <text x="160" y="55">R</text>
+
+			    <text x="160" y="205">-R/2</text>
+			    <text x="160" y="255">-R</text>
+
+			    <polygon class="rectangle" points="250,150 150,150 150,250, 250,250"
+			    fill="#FF69B4" fill-opacity="0.3" stroke="#FF69B4"></polygon>
+
+			    <path class="circle" d="M 200 150 A 50 50, 90, 0, 0, 150 100 L 150 150 Z"
+			    fill="#FF4500" fill-opacity="0.3" stroke="#FF4500"></path>
+
+			    <polygon class="triangle" points="50,150 150,150 150,250"
+			    fill="#FFA500" fill-opacity="0.3" stroke="#FFA500"></polygon>
+
+			    <circle r="0" cx="150" cy="
+			    150" id="target-dot"></circle>
+
+		    </svg>
+
+		    <!--submitting-->
+			<p><input id = "button" class="form_button" type="submit" name="button" value="Жмяк" onclick="valid()"></p>
+
+		    <div id="form">
+				<!--input x-->
+				<section  class="x" id="x_text">
+					<p>X value:</p>
+					<input type="text" name="x" id="text_field" onchange ="validate_x()"><br>
+					<p>x &#8712; (-3; 3)</p>
+			    </section>
+
+			    <!--input y-->
+				<section class="y" id="checkbox_y">
+					<p>Y value:</p>
+					<!--checkbox-->
+					<table class="table_y">
+						<!--first row-->
+						<tr>
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "-5" id="checkbox1">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox1">-5</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "-4" id="checkbox2">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox2">-4</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "-3" id="checkbox3">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox3">-3</label></td>
+						</tr>
+
+						<!--second row-->
+						<tr>
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "-2" id="checkbox4">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox4">-2</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "-1" id="checkbox5">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox5">-1</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "0" id="checkbox6">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox6">0</label></td>
+						</tr>
+						<!--third row-->
+						<tr>
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "1" id="checkbox7">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox7">1</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "2" id="checkbox8">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox8">2</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="y" value = "3" id="checkbox9">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox9">3</label></td>
+						</tr>
+					</table>
+				</section>
+
+				<!--input R-->
+				<section class="R">
+					<p>Radius:</p>
+					<table class="table_R">
+						<!--first row-->
+						<tr>
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="R" value = "1" id="checkbox10">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox10">1</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="R" value = "1.5" id="checkbox11">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox11">1.5</label></td>
+
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="R" value = "2" id="checkbox12">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox12">2</label></td>
+						</tr>
+						<!--second row-->
+						<tr>
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="R" value = "2.5" id="checkbox13">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox13">2.5</label></td>
+						
+							<td><div class="block">
+								<label>
+									<input type="checkbox" name="R" value = "3" id="checkbox14">
+									<span class="box"></span>
+								</label>
+							</div></td>
+							<td><label for="checkbox14">3</label></td>
+						</tr>		
+					</table>
+				</section>
+			</div>
+		</div>
+
+		<div id = "result"></div>
+
+
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>
+			function validate_x(){
+		    	//main block with elements
+		    	const parent = document.getElementById("form");
+		    	//input field for x coordinate
+		    	const val = document.getElementById("text_field").value; 
+		    	//nodes to change
+			   	const node2 = document.getElementById("checkbox_y"); 
+			   	const node3 = document.querySelector('.R');
+		    	//checking
+		    	if(isNaN(val) || document.getElementById("text_field").value.trim().length === 0){
+		    		//button become disabled 
+		    		document.querySelector(".form_button").setAttribute("disabled", true); 
+		    		//if we also have pic with error
+		    		if (!document.querySelector("#error")){ 
+		    			//text
+				   		const text = document.createTextNode("! x have to be a number !"); 
+				   		const span = document.createElement("span"); 
+				   		span.appendChild(text); 
+				   		span.style = "color: red"; 
+				   		const p = document.createElement("p"); 
+				   		p.appendChild(span); 
+				   		//pic error
+						const img = document.createElement("img"); 
+			    		img.src = "злой_пингвинчик.gif"; 
+			    		img.style.border = "6px dotted #CD5C5C"; 
+			    		const container = document.createElement("p"); 
+			    		container.appendChild(img);
+			    		//new section 
+			    		const section = document.createElement("section");
+			    		section.appendChild(p);
+			   			section.appendChild(container);
+			   			section.id = "error"; 
+			   			section.padding = 1;
+			   		
+			   			disappear(node2);
+			   			disappear(node3);
+			   				
+			   			parent.appendChild(section);
+			   			console.log(window.scrollY);
+			   			scrolling();
+			   			console.log(window.scrollY);
+			   			return;
+			   		}
+		   		}else if(document.querySelector("#error")){
+		   			parent.removeChild(document.getElementById("error"));
+		   			appear(node2);
+		   			appear(node3);
+		   		}
+		   		if(val.indexOf(".") !== -1){
+			  		if (val.slice(0, val.indexOf(".")) >= 3 || val.slice(0, val.indexOf(".")) <= -3){
+			  			error();
+			   			return;
+		   			}
+		   		}else if(val <= -3 || val >= 3){
+		   			error();
+		   			return;
+		   		}
+		   		document.querySelector(".form_button").removeAttribute("disabled");
+			}
+			//function to hide an element
+			function disappear(element){
+				element.classList.add("disappear");
+			}
+			//function to return an element
+			function appear(element){
+				element.classList.remove("disappear");
+			}
+		    //error message and button lock
+			function error(){
+		   		document.getElementById("button").setAttribute("disabled", true);
+		   		alert("x лежит в интервале (-3; 3)");
+			}
+			//scroll to the table of results
+			function scrolling(){
+				document.querySelector('#button').addEventListener('click', () => {
+					setTimeout(() => window.scrollTo(0,document.body.scrollHeight), 1000);
+				});
+			}
+
+			function valid(){
+			    let i;
+				const clickOn = document.querySelectorAll('input:checked');
+				const allY = [];
+				const allR = [];
+				if (clickOn.length === 0){
+			    	alert("You haven't choosen any value");
+			    	return;
+			    } 
+			    else {
+			        for (i = 0; i < clickOn.length; i++){
+			        	if (clickOn[i].getAttribute("name") === "y"){
+			        		allY.push(clickOn[i].getAttribute("value"));
+			        	}
+			            else{
+			            	allR.push(clickOn[i].getAttribute("value"));
+			            }
+			        }
+				}
+
+				if(isNaN(document.getElementById("text_field").value) || document.getElementById("text_field").value.trim().length === 0){
+				   	alert("You haven't written value of X");
+			  	 	return;
+			   	}
+			   	if (allY.length === 0){
+				   	alert("You haven't choosen any value for Y");
+			  	} else if (allR.length === 0){
+				    alert("You haven't choosen any value for Radius");
+				} 
+			    else {
+					const form = new FormData();
+					form.append('x', document.getElementById("text_field").value);
+					for (i = 0; i < allY.length; i++){
+						form.append(`y[${i}]`, allY[i]);
+					}
+					for (i = 0; i < allR.length; i++) {
+						form.append(`R[${i}]`, allR[i]);
+					}
+
+					$(document).ready(function () {
+						$.ajax({
+							method: "POST",
+							url: "script_2.php",
+							processData: false,
+							contentType: false,
+							data: form,
+							dataType: "json",
+							success: function (res) {
+								setResult(res);
+							},
+							statusCode: {
+								200: function () {
+									console.log("Ok");
+								}
+							}
+						});
+					});
+				}
+			}
+
+			function setResult(res){
+				// console.log(res.length);
+				// console.log(res[0]["x"]);
+				// console.log(res[0]["y"]);
+				// console.log(res[0]["R"]);
+				// console.log(res[0]["result"]);
+				// console.log(res[0]["work_time"]);
+				// console.log(res[0]["currentTime"]);
+				const html = String("<table id = 'resultTable'>" +
+						" <tr> " +
+						"<th>Координата X</th> " +
+						"<th>Координата Y</th> " +
+						"<th>Радиус</th>" +
+						" <th>Результат</th> " +
+						"<th>Время работы скрипта</th>" +
+						" <th>Текущее время</th> " +
+						"</tr>");
+				let data = "";
+				for (let i = 0; i < res.length; i++){
+					data += `<tr>
+ 						<td>${res[i]["x"]}</td>
+ 						<td>${res[i]["y"]}</td>
+ 						<td>${res[i]["R"]}</td>
+ 						<td>${res[i]["result"]}</td>
+ 						<td>${res[i]["work_time"]} мкс</td>
+ 						<td>${res[i]["currentTime"]}</td>
+ 						</tr>`;
+				}
+				document.getElementById("result").innerHTML = html + data + "</table>";
+
+			}
+
+		</script>
+	</body>
+</html>
+
